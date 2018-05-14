@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainPlayerController : MonoBehaviour {
 
@@ -27,5 +28,11 @@ public class MainPlayerController : MonoBehaviour {
         {
 
         }
+
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        SceneManager.LoadScene("Dodge", LoadSceneMode.Single);
+        Debug.Log("Collision!");
     }
 }
