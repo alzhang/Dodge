@@ -32,7 +32,7 @@ public class MainPlayerController : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Dodge", LoadSceneMode.Single);
+		SceneManager.LoadScene(Random.Range(1,3), LoadSceneMode.Single);
         Debug.Log("Collision!");
     }
 }
