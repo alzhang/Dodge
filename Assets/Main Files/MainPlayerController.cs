@@ -33,6 +33,8 @@ public class MainPlayerController : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 		SceneManager.LoadScene(Random.Range(1,3), LoadSceneMode.Single);
+		MainGameStateController.difficulty++;
+		//GameObject.Find("GameState").GetComponent<MainGameStateController>().difficulty++;
         Debug.Log("Collision!");
     }
 }

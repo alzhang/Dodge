@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallScript : MonoBehaviour {
 
-	public float ySpeed = 5f;
+	public static float ySpeed;
+	public Transform blocksContainer;
 	float xSpeed = 0f;
 
 	// Use this for initialization
@@ -14,7 +16,16 @@ public class BallScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(new Vector3(xSpeed, Time.deltaTime * ySpeed,0));
+		transform.Translate(new Vector3(Time.deltaTime * xSpeed * 30, Time.deltaTime * ySpeed,0));
+		if ((transform.position.x) > 10) {
+			transform.position = new Vector3(9, transform.position.y, 0);
+		}
+		if ((transform.position.x) < -10) {
+			transform.position = new Vector3(-9, transform.position.y, 0);
+		}
+		if ((transform.position.y) > 10) {
+			transform.position = new Vector3(transform.position.x, 9, 0);
+		}
 
 	}
 
@@ -26,6 +37,10 @@ public class BallScript : MonoBehaviour {
 			ySpeed = -ySpeed;
 			Debug.Log ("Collided with a block");
 			Destroy (other.gameObject);
+			Debug.Log (blocksContainer.childCount);
+			if (blocksContainer.childCount == 1) {
+				SceneManager.LoadScene (0, LoadSceneMode.Single);
+			}
 			//GetComponent<Renderer>().enabled = false;
 			//GetComponent<BoxCollider>().enabled = false;
 		}
@@ -42,9 +57,10 @@ public class BallScript : MonoBehaviour {
 		}
 		if (other.gameObject.CompareTag ("Bottom")) {
 			Debug.Log ("Game Over");
-			xSpeed = 0;
-			ySpeed = 0;
-			Application.Quit ();
+			//xSpeed = 0;
+			PaddleScript.difficulty = 0;
+			PaddleScript.timerFromMainScene = 0;
+			SceneManager.LoadScene(1, LoadSceneMode.Single);
 		}
 	}
 
