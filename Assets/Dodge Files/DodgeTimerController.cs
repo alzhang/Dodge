@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class DodgeTimerController : MonoBehaviour {
 
@@ -21,7 +23,7 @@ public class DodgeTimerController : MonoBehaviour {
         txt.text = Mathf.RoundToInt(timer).ToString();
         if (timer < 0)
         {
-            //switch back scene
+            SceneManager.LoadScene("main");
         }
     }
 }
