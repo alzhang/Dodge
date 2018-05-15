@@ -21,6 +21,11 @@ public class DodgePlayerController : MonoBehaviour {
         currentPosition += rotation*speed;
 
         transform.position = new Vector3(Mathf.Cos(currentPosition)*radius, Mathf.Sin(currentPosition)*radius, 0);
+        
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

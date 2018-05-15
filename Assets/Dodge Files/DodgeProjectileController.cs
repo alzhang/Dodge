@@ -18,6 +18,8 @@ public class DodgeProjectileController : MonoBehaviour {
 	void Update () {
 		if(Random.value < frequency)
         {
+            GameObject child = Instantiate(beam);
+            child.transform.position = new Vector3(0, 0, -10);
             //spawn an indicator
 
         }
