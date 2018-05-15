@@ -10,10 +10,13 @@ public class DodgeTimerController : MonoBehaviour {
     public float timer = 10f;
 
     public Text txt;
-    
+	float timerFromMainScene;
+	float difficulty;
 
 	// Use this for initialization
 	void Start () {
+		timerFromMainScene = MainGameStateController.score;
+		difficulty = MainGameStateController.difficulty;
         txt.text = Mathf.RoundToInt(timer).ToString();
 	}
 	
@@ -23,6 +26,8 @@ public class DodgeTimerController : MonoBehaviour {
         txt.text = Mathf.RoundToInt(timer).ToString();
         if (timer < 0)
         {
+			PaddleScript.difficulty = difficulty;
+			PaddleScript.timerFromMainScene = timerFromMainScene;
             SceneManager.LoadScene("main");
         }
     }
