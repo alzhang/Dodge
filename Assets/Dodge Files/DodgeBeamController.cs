@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DodgeBeamController : MonoBehaviour {
 
-    private Transform indicator;
+
     private Transform beam;
 
     public float beamTimer = 1.5f;
@@ -14,10 +14,10 @@ public class DodgeBeamController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        indicator = transform.Find("BeamIndicator");
         beam = transform.Find("Cylinder");
-        
+
         beam.GetComponent<Renderer>().enabled = false;
+        beam.GetComponent<Rigidbody>().detectCollisions = false;
         
         transform.eulerAngles = new Vector3(0, 0, Random.value * 360);
         beamShown = false;
@@ -28,6 +28,8 @@ public class DodgeBeamController : MonoBehaviour {
         timer += Time.deltaTime;
         if(!beamShown && timer > beamTimer)
         {
+
+            beam.GetComponent<Rigidbody>().detectCollisions = true;
             beam.GetComponent<Renderer>().enabled = true;
             beamShown = true;
         }

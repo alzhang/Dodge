@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEditor;
+
 
 public class DodgePlayerController : MonoBehaviour {
 
@@ -24,8 +27,16 @@ public class DodgePlayerController : MonoBehaviour {
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag != "Player")
+        {
+            Debug.Log("fuck");
+            //EditorApplication.isPaused = true;
+            MainGameStateController.Restart();
+
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
     }
+    
 }

@@ -57,11 +57,11 @@ public class BallScript : MonoBehaviour {
 		}
 		if (other.gameObject.CompareTag ("Bottom")) {
 			Debug.Log ("Game Over");
-			//xSpeed = 0;
-			PaddleScript.difficulty = 0;
-			PaddleScript.timerFromMainScene = 0;
-			SceneManager.LoadScene(1, LoadSceneMode.Single);
-		}
+            //xSpeed = 0;
+            MainGameStateController.Restart();
+
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        }
 	}
 
 }

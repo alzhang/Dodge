@@ -58,27 +58,5 @@ public class MainEnvironmentGenerator : MonoBehaviour {
         {
             GenerateNewObstacle(previousPosition, previousSize, newPlane);
         }
-
-        /*
-         * float rand = Random.value * (1-minSize) + minSize;
-        float width = newPlane.GetComponent<Collider>().bounds.size.x * newPlane.transform.localScale.x;
-        float length = newPlane.GetComponent<Collider>().bounds.size.z * newPlane.transform.localScale.z;
-
-        Vector3 current = newPlane.transform.localScale;
-        
-        newPlane.transform.localScale = new Vector3(current.x * rand, current.y, current.z);
-        float newX = Random.value * previousWidth - previousX/2;
-
-        newPlane.transform.position = new Vector3(newX, 0, currentDistance);
-        currentDistance += newPlane.GetComponent<Collider>().bounds.size.z;
-
-        for(int i = 0; i < Mathf.Log(MainGameStateController.score); i++)
-        {
-            GenerateNewObstacle(previousX, 0, currentDistance, width, length, newPlane);
-        }
-
-
-        previousWidth = width * rand;
-        previousX = newX;*/
     }
 }
