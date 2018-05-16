@@ -19,6 +19,7 @@ public class AvoidGameStateController : MonoBehaviour {
 
         timerFromMainScene = MainGameStateController.score;
         difficulty = MainGameStateController.difficulty;
+        timer = timer * difficulty;
     }
 
     // Update is called once per frame

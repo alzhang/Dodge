@@ -17,6 +17,7 @@ public class DodgeTimerController : MonoBehaviour {
 	void Start () {
 		timerFromMainScene = MainGameStateController.score;
 		difficulty = MainGameStateController.difficulty;
+        timer = timer * difficulty;
         txt.text = Mathf.RoundToInt(timer).ToString();
 	}
 	
