@@ -21,7 +21,7 @@ public class MainGameStateController : MonoBehaviour {
 	void Start () {
 		difficulty = PaddleScript.difficulty;
 		time = PaddleScript.timerFromMainScene;
-        highScoreText.text = "High Score: 0";
+        highScoreText.text = "High: " + highScore;
 
     }
 	
@@ -33,21 +33,19 @@ public class MainGameStateController : MonoBehaviour {
         Debug.Log(highScore);
         if(score > highScore)
         {
-            highScoreText.text = "High Score: " + highScore;
+            highScoreText.text = "High: " + highScore;
         }
 	}
 
     public static void Restart()
     {
-		Debug.Log ("Score: " + score);
-		score = 0;
-		difficulty = 0;
-		PaddleScript.difficulty = 0;
-		PaddleScript.timerFromMainScene = 0;
-		Debug.Log("restaring");
 		if(score > highScore)
 		{
             highScore = score;
         }
+        score = 0;
+        difficulty = 0;
+        PaddleScript.difficulty = 0;
+        PaddleScript.timerFromMainScene = 0;
     }
 }

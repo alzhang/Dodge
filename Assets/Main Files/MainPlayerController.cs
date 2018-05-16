@@ -31,7 +31,9 @@ public class MainPlayerController : MonoBehaviour {
 			transform.position = transform.position + new Vector3 (movement * sideSpeed, 0, forwardSpeed);
 
 			if (transform.position.y < lossHeight) {
+                Debug.Log("restarting");
 				MainGameStateController.Restart();
+                Debug.Log("exit restart");
 				SceneManager.LoadScene(0, LoadSceneMode.Single);
 			}
 		}
