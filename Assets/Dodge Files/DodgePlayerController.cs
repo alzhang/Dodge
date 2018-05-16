@@ -31,7 +31,6 @@ public class DodgePlayerController : MonoBehaviour {
     {
         if (other.tag != "Player")
         {
-            Debug.Log("fuck");
             //EditorApplication.isPaused = true;
             MainGameStateController.Restart();
 

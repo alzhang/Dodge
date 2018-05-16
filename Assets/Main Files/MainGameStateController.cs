@@ -30,20 +30,23 @@ public class MainGameStateController : MonoBehaviour {
         time += Time.deltaTime;
         score = Mathf.RoundToInt(time);
         scoreText.text = "Score: " + score;
-        if(score > highScore)
-        {
+        //if(score > highScore)
+        //{
             highScoreText.text = "High Score: " + highScore;
-        }
+        //}
 	}
 
     public static void Restart()
     {
-        if(score > highScore)
-        {
+		Debug.Log ("Score: " + score);
+		score = 0;
+		difficulty = 0;
+		PaddleScript.difficulty = 0;
+		PaddleScript.timerFromMainScene = 0;
+		Debug.Log("restaring");
+		if(score > highScore)
+		{
             highScore = score;
-            score = 0;
-            difficulty = 0;
-            Debug.Log("restaring");
         }
     }
 }

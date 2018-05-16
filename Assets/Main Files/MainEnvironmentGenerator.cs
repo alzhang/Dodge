@@ -47,7 +47,7 @@ public class MainEnvironmentGenerator : MonoBehaviour {
         float newRatio= Random.value * (1 - minSize) + minSize;
         newPlane.transform.localScale = new Vector3(planeObject.transform.localScale.x * newRatio, planeObject.transform.localScale.y, planeObject.transform.localScale.z);
 
-        Vector3 newPosition = new Vector3(Random.value * previousSize.x + (previousPosition.x - previousSize.x / 2), 0, previousPosition.z + previousSize.z);
+		Vector3 newPosition = new Vector3(((Random.value+.5f)/2f) * previousSize.x + (previousPosition.x - previousSize.x / 2), 0, previousPosition.z + previousSize.z);
         newPlane.transform.position = newPosition;
 
         previousPosition = newPosition;

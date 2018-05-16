@@ -5,36 +5,43 @@ using UnityEngine.SceneManagement;
 
 public class MainPlayerController : MonoBehaviour {
 
-    public float sideSpeed = .5f;
-    public float lossHeight = -5f;
-    public float forwardSpeed = .5f;
+	public float sideSpeed = .5f;
+	public float lossHeight = -5f;
+	public float forwardSpeed = 2f;
+	float pauseTimer = 0f;
 
-    private Rigidbody rb;
+	private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-        rb = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-        float movement = Input.GetAxis("Horizontal");
+		float movement = Input.GetAxis ("Horizontal");
 
-        //rb.velocity = new Vector3(movement * sideSpeed, rb.velocity.y, forwardSpeed);
-        
-        transform.position = transform.position + new Vector3(movement * sideSpeed, 0, forwardSpeed);
+		if (pauseTimer < 1f) {
+			pauseTimer += Time.deltaTime;
+		} else {
 
-        if(transform.position.y < lossHeight)
-        {
 
-        }
+			//rb.velocity = new Vector3(movement * sideSpeed, rb.velocity.y, forwardSpeed);
 
-    }
-    void OnTriggerEnter(Collider other)
-    {
-		SceneManager.LoadScene(Random.Range(1,3), LoadSceneMode.Single);
+			transform.position = transform.position + new Vector3 (movement * sideSpeed, 0, forwardSpeed);
+
+			if (transform.position.y < lossHeight) {
+				MainGameStateController.Restart();
+				SceneManager.LoadScene(0, LoadSceneMode.Single);
+			}
+		}
+
+	}
+	void OnTriggerEnter(Collider other)
+	{
 		MainGameStateController.difficulty++;
+		SceneManager.LoadScene(Random.Range(1,4), LoadSceneMode.Single);
 		//GameObject.Find("GameState").GetComponent<MainGameStateController>().difficulty++;
-        Debug.Log("Collision!");
-    }
+		Debug.Log("Collision!");
+	}
 }
