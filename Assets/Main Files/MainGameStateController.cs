@@ -30,10 +30,11 @@ public class MainGameStateController : MonoBehaviour {
         time += Time.deltaTime;
         score = Mathf.RoundToInt(time);
         scoreText.text = "Score: " + score;
-        //if(score > highScore)
-        //{
+        Debug.Log(highScore);
+        if(score > highScore)
+        {
             highScoreText.text = "High Score: " + highScore;
-        //}
+        }
 	}
 
     public static void Restart()

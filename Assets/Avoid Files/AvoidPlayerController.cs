@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class AvoidPlayerController : MonoBehaviour {
 
@@ -13,5 +15,11 @@ public class AvoidPlayerController : MonoBehaviour {
 
         transform.position += new Vector3(horizontal, lateral, 0) * speed;
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        MainGameStateController.Restart();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }
